@@ -1,6 +1,6 @@
 import React from "react";
 import IBrewerySummary from "./types/brewerySummary.type";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Col } from "react-bootstrap";
 
 interface Props {
     BrewerySummary: IBrewerySummary
@@ -9,16 +9,23 @@ interface Props {
 
 export const BrewerySearchResult: React.FC<Props> = ({ BrewerySummary }) => {
     return (
-        <Card style={{ width: '18rem' }}>
-            <Card.Body>
-                <Card.Title>{BrewerySummary.Name}</Card.Title>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                </Card.Text>
-                <Button variant="primary">See More!</Button>
-            </Card.Body>
-        </Card>
+        <Col key={BrewerySummary.id}>
+            <Card>
+                <Card.Header>
+                    <Card.Title>{BrewerySummary.Name}</Card.Title>
+                </Card.Header>
+                <Card.Body>
+
+                    <Card.Text>
+                        {BrewerySummary.BreweryType}
+                    </Card.Text>
+                    <div>
+                        <Button variant="primary" href="#">Go to Details</Button>
+                        <Button variant="secondary" href={BrewerySummary.URL ? BrewerySummary.URL : ""}>Go to Website</Button>
+                    </div>
+                </Card.Body>
+            </Card>
+        </Col>
     );
 };
 
