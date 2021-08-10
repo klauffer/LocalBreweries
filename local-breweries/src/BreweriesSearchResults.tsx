@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import OpenBreweryService from "./services/openBrewery.service"
 import IBrewerySummary from "./types/brewerySummary.type";
+import BrewerySearchResult from "./BrewerySearchResult";
 
 interface Props {
     SearchTerm: string
@@ -27,9 +28,7 @@ export const BreweriesSearchResults: React.FC<Props> = ({SearchTerm}) => {
             <ul>
         {breweries.map((brewery) => (
           <li key={brewery.id}>
-              <h2>{brewery.Name}</h2>
-            <h3>{brewery.BreweryType}</h3>
-            <p>{brewery.URL}</p>
+              <BrewerySearchResult BrewerySummary={brewery} />
           </li>
         ))}
       </ul>
