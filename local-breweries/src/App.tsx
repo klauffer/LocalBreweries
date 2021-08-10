@@ -11,7 +11,7 @@ const App: React.FC = () => {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <BreweriesSearchResults SearchTerm='kyle says hello'/>
+        <BreweriesSearchResults SearchTerm='harrisburg'/>
       </header>
     </div>
   );

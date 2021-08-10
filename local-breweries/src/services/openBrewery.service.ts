@@ -24,8 +24,8 @@ interface IBrewery {
   }
 
 class OpenBreweryService {
-    async get() : Promise<IBrewerySummary[]> {
-        const breweries = await api.get<IBrewery[]>(`/breweries`);
+    async getByCity(cityName: string) : Promise<IBrewerySummary[]> {
+        const breweries = await api.get<IBrewery[]>(`/breweries?by_city=${cityName}`);
         return breweries.data.map(brewery => this.toSummary(brewery))
     }
 

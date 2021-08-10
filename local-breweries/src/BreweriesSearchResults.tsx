@@ -12,9 +12,9 @@ export const BreweriesSearchResults: React.FC<Props> = ({SearchTerm}) => {
     const [breweries, setBreweries]: [IBrewerySummary[], (breweries: IBrewerySummary[]) => void] = useState(
         defaultBreweries
     );
-
+ 
     useEffect(() => {
-        OpenBreweryService.get()
+        OpenBreweryService.getByCity(SearchTerm)
         .then(brewerySummaries => {
             setBreweries(brewerySummaries);
         });
