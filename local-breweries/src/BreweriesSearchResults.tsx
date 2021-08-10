@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import OpenBreweryService from "./services/openBrewery.service"
 import IBrewerySummary from "./types/brewerySummary.type";
 import BrewerySearchResult from "./BrewerySearchResult";
+import { Container, Row, CardGroup, Card, Col, Button } from "react-bootstrap";
+import { Link } from "react-bootstrap/lib/Navbar";
 
 interface Props {
     SearchTerm: string
@@ -23,15 +25,29 @@ export const BreweriesSearchResults: React.FC<Props> = ({ SearchTerm }) => {
 
 
     return (
-        <div>
+        <Container>
             {SearchTerm}
-            <ul>
-                {breweries.map((brewery) => (
-                    <li key={brewery.id}>
-                        <BrewerySearchResult BrewerySummary={brewery} />
-                    </li>
-                ))}
-            </ul>
-        </div>
+            <Row xs={1} md={2} className="g-4">
+            {breweries.map((brewery) => (
+                <Col key={brewery.id}>
+                <Card>
+                    <Card.Header>
+                    <Card.Title>{ brewery.Name }</Card.Title>
+                    </Card.Header>
+                    <Card.Body>
+                    
+                    <Card.Text>
+                        This is a longer card with supporting text below as a natural
+                        lead-in to additional content. This content is a little bit longer.
+                    </Card.Text>
+                    <Button variant="primary" href="#">Go to Details</Button>
+                    <Button variant="secondary" href={ brewery.URL ? brewery.URL : "" }>Go to Website</Button>
+                    </Card.Body>
+                </Card>
+                </Col>
+            ))}
+            </Row>
+
+        </Container>
     );
 };
