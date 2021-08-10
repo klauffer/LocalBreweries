@@ -37,11 +37,12 @@ export const BreweriesSearchResults: React.FC<Props> = ({ SearchTerm }) => {
                     <Card.Body>
                     
                     <Card.Text>
-                        This is a longer card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit longer.
+                        { brewery.BreweryType }
                     </Card.Text>
-                    <Button variant="primary" href="#">Go to Details</Button>
-                    <Button variant="secondary" href={ brewery.URL ? brewery.URL : "" }>Go to Website</Button>
+                    <div>
+                        <Button variant="primary" href="#">Go to Details</Button>
+                        <Button variant="secondary" href={ brewery.URL ? brewery.URL : "" }>Go to Website</Button>
+                    </div>
                     </Card.Body>
                 </Card>
                 </Col>
