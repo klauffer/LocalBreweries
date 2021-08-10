@@ -9,16 +9,16 @@ interface Props {
 
 const defaultBreweries: IBrewerySummary[] = [];
 
-export const BreweriesSearchResults: React.FC<Props> = ({SearchTerm}) => {
+export const BreweriesSearchResults: React.FC<Props> = ({ SearchTerm }) => {
     const [breweries, setBreweries]: [IBrewerySummary[], (breweries: IBrewerySummary[]) => void] = useState(
         defaultBreweries
     );
- 
+
     useEffect(() => {
         OpenBreweryService.getByCity(SearchTerm)
-        .then(brewerySummaries => {
-            setBreweries(brewerySummaries);
-        });
+            .then(brewerySummaries => {
+                setBreweries(brewerySummaries);
+            });
     }, []);
 
 
@@ -26,13 +26,12 @@ export const BreweriesSearchResults: React.FC<Props> = ({SearchTerm}) => {
         <div>
             {SearchTerm}
             <ul>
-        {breweries.map((brewery) => (
-          <li key={brewery.id}>
-              <BrewerySearchResult BrewerySummary={brewery} />
-          </li>
-        ))}
-      </ul>
-
+                {breweries.map((brewery) => (
+                    <li key={brewery.id}>
+                        <BrewerySearchResult BrewerySummary={brewery} />
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
