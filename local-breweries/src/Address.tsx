@@ -8,7 +8,7 @@ interface Props {
 const Address: React.FC<Props> = ({ Address }) => {
 
     return (
-        <div>{Address.Street}, {Address.City}, {Address.State} {Address.Zip}</div>
+        <span>{Address.Street}, {Address.City}, {Address.State} {Address.Zip}</span>
     );
 };
 
