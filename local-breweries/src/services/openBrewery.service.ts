@@ -1,7 +1,6 @@
 import api from "./openBrewery.connection"
 import IBrewerySummary from "../types/brewerySummary.type";
 import IAddress from "../types/address.type";
-import { stat } from "fs";
 
 interface IBrewery {
     id: number,

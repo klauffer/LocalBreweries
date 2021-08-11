@@ -20,7 +20,7 @@ export const BreweriesSearchResults: React.FC<Props> = ({ SearchTerm }) => {
             .then(brewerySummaries => {
                 setBreweries(brewerySummaries);
             });
-    }, []);
+    }, [SearchTerm]);
 
 
     return (
