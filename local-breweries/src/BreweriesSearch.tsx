@@ -1,6 +1,8 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { BreweriesSearchResults } from "./BreweriesSearchResults";
+import { withRouter } from 'react-router';
+
 
 const BreweriesSearch: React.FC = () => {
 
@@ -11,4 +13,4 @@ const BreweriesSearch: React.FC = () => {
     );
 };
 
-export default BreweriesSearch;
+export default withRouter(BreweriesSearch);

@@ -20,7 +20,7 @@ export const BrewerySearchResult: React.FC<Props> = ({ BrewerySummary }) => {
                         {BrewerySummary.BreweryType}
                     </Card.Text>
                     <div>
-                        <Button variant="primary" href="#">Go to Details</Button>
+                        <Button variant="primary" href={`/Brewery/${BrewerySummary.id}`}>Go to Details</Button>
                         <Button variant="secondary" href={BrewerySummary.URL ? BrewerySummary.URL : ""}>Go to Website</Button>
                     </div>
                 </Card.Body>
