@@ -1,13 +1,15 @@
 import React from 'react';
 import './App.scss';
-import { BreweriesSearchResults } from "./BreweriesSearchResults";
+import BreweriesSearch from './BreweriesSearch';
+import { Switch, Route } from 'react-router';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <BreweriesSearchResults SearchTerm='harrisburg'/>
-      </header>
+      <BreweriesSearch />
+      <Switch>
+        <Route exact path="/" component={BreweriesSearch} />
+      </Switch>
     </div>
   );
 }

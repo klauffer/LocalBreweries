@@ -25,7 +25,6 @@ export const BreweriesSearchResults: React.FC<Props> = ({ SearchTerm }) => {
 
     return (
         <Container>
-            {SearchTerm}
             <Row xs={1} md={2} className="g-4">
             {breweries.map((brewery) => (
                 <BrewerySearchResult key={brewery.id} BrewerySummary={brewery} />
