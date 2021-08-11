@@ -1,6 +1,7 @@
 import React from "react";
 import IBrewerySummary from "./types/brewerySummary.type";
 import { Card, Button, Col } from "react-bootstrap";
+import Address from "./Address";
 
 interface Props {
     BrewerySummary: IBrewerySummary
@@ -18,6 +19,7 @@ export const BrewerySearchResult: React.FC<Props> = ({ BrewerySummary }) => {
 
                     <Card.Text>
                         {BrewerySummary.BreweryType}
+                        <Address Address={BrewerySummary.Address} />
                     </Card.Text>
                     <div>
                         <Button variant="primary" href={`/Brewery/${BrewerySummary.id}`}>Go to Details</Button>
