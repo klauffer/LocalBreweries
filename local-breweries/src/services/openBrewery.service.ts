@@ -1,6 +1,7 @@
 import api from "./openBrewery.connection"
 import IBrewerySummary from "../types/brewerySummary.type";
 import IAddress from "../types/address.type";
+import IBreweryDetail from "../types/breweryDetail.type";
 
 interface IBrewery {
     id: number,
@@ -28,6 +29,11 @@ class OpenBreweryService {
         return breweries.data.map(brewery => this.toSummary(brewery))
     }
 
+    async getById(id: string) : Promise<IBreweryDetail> {
+        const brewery = await api.get<IBrewery>(`/breweries/${id}`);
+        return this.toDetails(brewery.data);
+    }
+
     private toSummary(brewery: IBrewery) : IBrewerySummary {
         return {
             id: brewery.id,
@@ -35,6 +41,16 @@ class OpenBreweryService {
             BreweryType: brewery.brewery_type,
             URL: brewery.website_url,
             Address: this.toAddress(brewery.street, brewery.city, brewery.state, brewery.postal_code)
+        };
+    }
+
+    private toDetails(brewery: IBrewery) : IBreweryDetail {
+        return {
+            id: brewery.id,
+            Name: brewery.name,
+            Address: this.toAddress(brewery.street, brewery.city, brewery.state, brewery.postal_code),
+            Latitude: brewery.latitude,
+            Longitude: brewery.longitude
         };
     }
 
