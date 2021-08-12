@@ -32,7 +32,7 @@ const BreweryMap: React.FC<Props> = ({ Coordinate }) => {
                     bootstrapURLKeys={{ key: GetAPIKey() }}
                     center={GetCenter()}
                     zoom={15}>
-                    <BreweryMapMarker lat={+Coordinate.Latitude} lng={+Coordinate.Longitude} Text={'A'} />
+                    <BreweryMapMarker lat={+Coordinate.Latitude} lng={+Coordinate.Longitude}  />
                 </GoogleMapReact>
             </div>
         </div>

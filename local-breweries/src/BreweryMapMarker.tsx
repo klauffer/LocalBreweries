@@ -1,15 +1,15 @@
 import React from "react";
+import { FaBeer } from 'react-icons/fa';
 
 interface Props {
-    Text: string,
     lat: number,
     lng: number
 }
 
-const BreweryMapMarker: React.FC<Props> = ({ Text }) => {
+const BreweryMapMarker: React.FC<Props> = () => {
 
     return (
-        <div>{Text}</div>
+        <div><FaBeer/></div>
     );
 };
 
