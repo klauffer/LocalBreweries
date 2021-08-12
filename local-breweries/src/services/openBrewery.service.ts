@@ -2,6 +2,7 @@ import api from "./openBrewery.connection"
 import IBrewerySummary from "../types/brewerySummary.type";
 import IAddress from "../types/address.type";
 import IBreweryDetail from "../types/breweryDetail.type";
+import ICoordinate from "../types/coordinate.type";
 
 interface IBrewery {
     id: number,
@@ -49,8 +50,7 @@ class OpenBreweryService {
             id: brewery.id,
             Name: brewery.name,
             Address: this.toAddress(brewery.street, brewery.city, brewery.state, brewery.postal_code),
-            Latitude: brewery.latitude,
-            Longitude: brewery.longitude
+            Coordinate: this.toCoordinate(brewery.latitude, brewery.longitude)
         };
     }
 
@@ -60,6 +60,13 @@ class OpenBreweryService {
             City: city,
             State: state,
             Zip: zip
+        };
+    }
+
+    private toCoordinate(latitude: string, longitude: string) : ICoordinate{
+        return {
+            Latitude: latitude,
+            Longitude: longitude
         };
     }
 }

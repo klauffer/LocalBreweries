@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import { RouteComponentProps, withRouter } from "react-router";
 import IBreweryDetail from "./types/breweryDetail.type";
 import Address from "./Address";
+import BreweryMap from "./BreweryMap";
 
 type BreweryDetailParams = {
     id: string;
@@ -12,10 +13,12 @@ type BreweryDetailParams = {
 interface Props extends RouteComponentProps<BreweryDetailParams> { };
 
 const defaultBreweryDetail: IBreweryDetail = {
-    id:0,
-    Name:"N/A",
-    Latitude:"0",
-    Longitude:"0",
+    id: 0,
+    Name: "N/A",
+    Coordinate: {
+        Latitude: "0",
+        Longitude: "0"
+    },
     Address: {
         Street: "N/A",
         City: "N/A",
@@ -40,6 +43,7 @@ const BreweryDetail: React.FC<Props> = ({ match }) => {
         <Container>
             <div>{breweryDetail.Name}</div>
             <div><Address Address={breweryDetail.Address} /></div>
+            <BreweryMap Coordinate={breweryDetail.Coordinate} />
         </Container>
     );
 };
