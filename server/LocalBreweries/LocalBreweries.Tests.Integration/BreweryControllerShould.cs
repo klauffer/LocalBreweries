@@ -1,5 +1,6 @@
 using System.Net.Http;
 using System.Threading.Tasks;
+using LocalBreweries.Api;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Xunit;

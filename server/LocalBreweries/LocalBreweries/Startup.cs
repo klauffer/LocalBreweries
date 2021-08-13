@@ -1,19 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LocalBreweries.Configuration;
+using LocalBreweries.Api.Configuration;
+using LocalBreweries.Service.Breweries.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace LocalBreweries
+namespace LocalBreweries.Api
 {
     public class Startup
     {
@@ -33,6 +28,7 @@ namespace LocalBreweries
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LocalBreweries", Version = "v1" });
             });
+            services.AddMediatR(typeof(SearchCommandler));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

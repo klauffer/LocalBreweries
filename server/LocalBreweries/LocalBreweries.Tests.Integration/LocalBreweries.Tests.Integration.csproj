@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LocalBreweries\LocalBreweries.csproj" />
+    <ProjectReference Include="..\LocalBreweries\Api.csproj" />
   </ItemGroup>
 
 </Project>
