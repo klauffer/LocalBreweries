@@ -25,29 +25,17 @@ namespace LocalBreweries.Api.Breweries
         [ProducesResponseType(typeof(IEnumerable<Brewery>), StatusCodes.Status200OK)]
         public async Task<IEnumerable<Brewery>> Get([FromQuery] string city)
         {
-            var request = new SearchCommandler.BrewerySearchRequest(city);
-            var maybe = await _mediator.Send(request);
-            return maybe.Match(Enumerable.Empty<Brewery>(), breweries => breweries.From());
+            var maybe = await _mediator.Send(new SearchCommandler.BrewerySearchRequest(city));
+            return maybe.Match(Enumerable.Empty<Brewery>(), breweries => breweries.ToApiModel());
         }
 
         [HttpGet("{id:int}")]
         [ProducesResponseType(typeof(Brewery), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public Brewery Get(int id) =>
-            new Brewery
-            {
-                Id = id,
-                Name = "Moe's",
-                PhoneNumber = "867-5309",
-                Type = "Fictional",
-                Url = "https://github.com/klauffer",
-                Street = "700 Evergreen Terrace",
-                City = "Springfield",
-                Country = "US",
-                State = "PA",
-                Zip = "12345",
-                Latitude = 40.291059,
-                Longitude = -76.8816961,
-            };
+        public async Task<IActionResult> Get(int id)
+        {
+            var maybe = await _mediator.Send(new GetCommandler.GetBreweryRequest(id));
+            return maybe.Match<IActionResult>(NotFound(), breweries => Ok(breweries.ToApiModel()));
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace LocalBreweries.Api.Breweries
 
     internal static class Mappers
     {
-        public static Brewery From(this Service.Breweries.Queries.Brewery serviceBrewery) =>
+        public static Brewery ToApiModel(this Service.Breweries.Queries.Brewery serviceBrewery) =>
         new Brewery()
         {
             Id = serviceBrewery.Id,
@@ -38,7 +38,7 @@ namespace LocalBreweries.Api.Breweries
             Longitude = serviceBrewery.Coordinate.Longitude
         };
 
-        public static IEnumerable<Brewery> From(this IEnumerable<Service.Breweries.Queries.Brewery> serviceBreweries) =>
-            serviceBreweries.Select(From);
+        public static IEnumerable<Brewery> ToApiModel(this IEnumerable<Service.Breweries.Queries.Brewery> serviceBreweries) =>
+            serviceBreweries.Select(ToApiModel);
     }
 }
