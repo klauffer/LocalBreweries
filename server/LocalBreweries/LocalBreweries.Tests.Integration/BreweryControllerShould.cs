@@ -4,6 +4,8 @@ using LocalBreweries.Api;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Xunit;
+using System.Text.Json;
+using System.Collections.Generic;
 
 namespace LocalBreweries.Tests.Integration
 {
@@ -11,6 +13,8 @@ namespace LocalBreweries.Tests.Integration
     {
         private readonly TestServer _server;
         private readonly HttpClient _client;
+
+        private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase  };
 
         public BreweryControllerShould()
         {
@@ -23,17 +27,25 @@ namespace LocalBreweries.Tests.Integration
         [Fact]
         public async Task FindGetByCity()
         {
-            // Act
-            var response = await _client.GetAsync("/Brewery?city=harrisburg");
+            var city = "harrisburg";
+            var response = await _client.GetAsync($"/Brewery?city={city}");
             response.EnsureSuccessStatusCode();
+
+            var responseJson = await response.Content.ReadAsStringAsync();
+            var breweries = JsonSerializer.Deserialize<IEnumerable<Api.Breweries.Brewery>>(responseJson, _jsonSerializerOptions);
+
+            Assert.Contains(breweries, x => x.City == city);
         }
 
         [Fact]
         public async Task FindGetById()
         {
-            // Act
-            var response = await _client.GetAsync("/Brewery/10");
+            var id = 10;
+            var response = await _client.GetAsync($"/Brewery/{id}");
             response.EnsureSuccessStatusCode();
+            var responseJson = await response.Content.ReadAsStringAsync();
+            var brewery = JsonSerializer.Deserialize<Api.Breweries.Brewery>(responseJson, _jsonSerializerOptions);
+            Assert.Equal(id, brewery.Id);
         }
     }
 }
