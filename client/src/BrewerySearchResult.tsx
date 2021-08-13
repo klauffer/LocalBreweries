@@ -16,11 +16,8 @@ export const BrewerySearchResult: React.FC<Props> = ({ BrewerySummary }) => {
                     <Card.Title>{BrewerySummary.Name}</Card.Title>
                 </Card.Header>
                 <Card.Body>
-
-                    <Card.Text>
-                        {BrewerySummary.BreweryType}
-                        <Address Address={BrewerySummary.Address} />
-                    </Card.Text>
+                <div>{BrewerySummary.BreweryType}</div>
+                        <div><Address Address={BrewerySummary.Address} /></div>
                     <div>
                         <Button variant="primary" href={`/Brewery/${BrewerySummary.id}`}>Go to Details</Button>
                         <Button variant="secondary" href={BrewerySummary.URL ? BrewerySummary.URL : ""}>Go to Website</Button>
