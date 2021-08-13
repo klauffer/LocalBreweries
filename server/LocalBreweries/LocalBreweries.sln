@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalBreweries", "LocalBreweries\LocalBreweries.csproj", "{1DCC9E2D-148C-4CF4-97AA-0D283DAE9C4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "LocalBreweries\Api.csproj", "{1DCC9E2D-148C-4CF4-97AA-0D283DAE9C4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalBreweries.Tests.Integration", "LocalBreweries.Tests.Integration\LocalBreweries.Tests.Integration.csproj", "{82D38F59-33C5-41F5-ACA5-4BD0359BBEE6}"
 EndProject

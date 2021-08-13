@@ -1,4 +1,4 @@
-namespace LocalBreweries
+namespace LocalBreweries.Api.Breweries
 {
     public class Brewery
     {

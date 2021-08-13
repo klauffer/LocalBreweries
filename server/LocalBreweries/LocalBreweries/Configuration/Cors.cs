@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LocalBreweries.Configuration
+namespace LocalBreweries.Api.Configuration
 {
     internal static class Cors
     {

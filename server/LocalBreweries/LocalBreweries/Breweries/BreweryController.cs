@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LocalBreweries.Controllers
+namespace LocalBreweries.Api.Breweries
 {
     [ApiController]
     [Route("[controller]")]
