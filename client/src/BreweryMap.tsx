@@ -17,6 +17,10 @@ const BreweryMap: React.FC<Props> = ({ Coordinate }) => {
 
     function handleLoad(map : any) {
         mapRef.current = map;
+        setPosition({
+            lat: +Coordinate.Latitude,
+            lng: +Coordinate.Longitude
+        });
       }
 
 
@@ -29,15 +33,11 @@ const BreweryMap: React.FC<Props> = ({ Coordinate }) => {
 
     return (
         <div>
-            {/* {Coordinate.Latitude} , {Coordinate.Longitude}, {process.env.NODE_ENV} {process.env.REACT_APP_GOOGLE_MAP_API_KEY} */}
-            <div>{position.lat}, {position.lng}</div>
-            <div>{Coordinate.Latitude} , {Coordinate.Longitude}</div>
-            <div>{+Coordinate.Latitude} , {+Coordinate.Longitude}</div>
             <div style={{ height: '50vh', width: '50%' }}>
                 <GoogleMapReact
                     onGoogleApiLoaded={handleLoad}
                     bootstrapURLKeys={{ key: GetAPIKey() }}
-                    defaultCenter={{lat: +Coordinate.Latitude, lng: +Coordinate.Longitude }}
+                    center={position}
                     defaultZoom={15}>
                     <BreweryMapMarker lat={+Coordinate.Latitude} lng={+Coordinate.Longitude}  />
                 </GoogleMapReact>
