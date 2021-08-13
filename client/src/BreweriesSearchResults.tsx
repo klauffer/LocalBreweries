@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import OpenBreweryService from "./services/openBrewery.service"
 import IBrewerySummary from "./types/brewerySummary.type";
 import { Container, Row } from "react-bootstrap";
 import BrewerySearchResult from "./BrewerySearchResult";
+import ServiceFactory from "./services/serviceFactory"
 
 interface Props {
     SearchTerm: string
@@ -16,7 +16,8 @@ export const BreweriesSearchResults: React.FC<Props> = ({ SearchTerm }) => {
     );
 
     useEffect(() => {
-        OpenBreweryService.getByCity(SearchTerm)
+        let service = ServiceFactory.GetService();
+        service.getByCity(SearchTerm)
             .then(brewerySummaries => {
                 setBreweries(brewerySummaries);
             });

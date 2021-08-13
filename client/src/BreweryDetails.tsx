@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import OpenBreweryService from "./services/openBrewery.service"
 import { Container } from "react-bootstrap";
 import { RouteComponentProps, withRouter } from "react-router";
 import IBreweryDetail from "./types/breweryDetail.type";
 import Address from "./Address";
 import BreweryMap from "./BreweryMap";
+import ServiceFactory from "./services/serviceFactory"
 
 type BreweryDetailParams = {
     id: string;
@@ -33,7 +33,8 @@ const BreweryDetail: React.FC<Props> = ({ match }) => {
     );
 
     useEffect(() => {
-        OpenBreweryService.getById(match.params.id)
+        let service = ServiceFactory.GetService();
+        service.getById(match.params.id)
             .then(breweryDetail => {
                 setBreweryDetail(breweryDetail);
             });

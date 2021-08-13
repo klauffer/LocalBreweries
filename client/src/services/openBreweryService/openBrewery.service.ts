@@ -1,8 +1,9 @@
 import api from "./openBrewery.connection"
-import IBrewerySummary from "../types/brewerySummary.type";
-import IAddress from "../types/address.type";
-import IBreweryDetail from "../types/breweryDetail.type";
-import ICoordinate from "../types/coordinate.type";
+import IBrewerySummary from "../../types/brewerySummary.type";
+import IAddress from "../../types/address.type";
+import IBreweryDetail from "../../types/breweryDetail.type";
+import ICoordinate from "../../types/coordinate.type";
+import IService from "../service.type";
 
 interface IBrewery {
     id: number,
@@ -24,7 +25,7 @@ interface IBrewery {
     created_at: Date
   }
 
-class OpenBreweryService {
+class OpenBreweryService implements IService {
     async getByCity(cityName: string) : Promise<IBrewerySummary[]> {
         const breweries = await api.get<IBrewery[]>(`/breweries?by_city=${cityName}`);
         return breweries.data.map(brewery => this.toSummary(brewery))
