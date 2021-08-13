@@ -20,10 +20,13 @@ export class Client {
     }
 
     /**
+     * @param city (optional) 
      * @return Success
      */
-    breweryAll(  cancelToken?: CancelToken | undefined): Promise<Brewery[]> {
-        let url_ = this.baseUrl + "/Brewery";
+    breweryAll(city: string | null | undefined , cancelToken?: CancelToken | undefined): Promise<Brewery[]> {
+        let url_ = this.baseUrl + "/Brewery?";
+        if (city !== undefined && city !== null)
+            url_ += "city=" + encodeURIComponent("" + city) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace LocalBreweries.Controllers
 {
@@ -11,21 +10,9 @@ namespace LocalBreweries.Controllers
     [Route("[controller]")]
     public class BreweryController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        private readonly ILogger<BreweryController> _logger;
-
-        public BreweryController(ILogger<BreweryController> logger)
-        {
-            _logger = logger;
-        }
-
-        [HttpGet]
+        [HttpGet()]
         [ProducesResponseType(typeof(IEnumerable<Brewery>), StatusCodes.Status200OK)]
-        public IEnumerable<Brewery> Get()
+        public IEnumerable<Brewery> Get([FromQuery] string city)
         {
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new Brewery
@@ -36,7 +23,7 @@ namespace LocalBreweries.Controllers
                 Type = "Fictional",
                 Url = "https://github.com/klauffer",
                 Street = "700 Evergreen Terrace",
-                City = "Springfield",
+                City = city,
                 Country = "US",
                 State = "PA",
                 Zip = "12345",

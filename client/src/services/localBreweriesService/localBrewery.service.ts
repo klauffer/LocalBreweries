@@ -22,7 +22,7 @@ class LocalBreweryService implements IService {
     }
 
     async getByCity(cityName: string) : Promise<IBrewerySummary[]> {
-        const breweries = await this.client.breweryAll();
+        const breweries = await this.client.breweryAll(cityName);
         return breweries.map(brewery => this.toSummary(brewery))
     }
 

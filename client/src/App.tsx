@@ -9,7 +9,7 @@ import ServiceFactory, { Services } from "./services/serviceFactory";
 const App: React.FC = () => {
 
   // factory that determines what service to use
-  ServiceFactory.SetService(Services.openBrewery);
+  ServiceFactory.SetService(Services.localBrewery);
 
   return (
     <div className="App">
