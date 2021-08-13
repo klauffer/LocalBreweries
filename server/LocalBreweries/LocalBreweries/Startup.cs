@@ -1,4 +1,5 @@
 using LocalBreweries.Api.Configuration;
+using LocalBreweries.Service.Breweries.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,7 @@ namespace LocalBreweries.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LocalBreweries", Version = "v1" });
             });
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(SearchCommandler));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
